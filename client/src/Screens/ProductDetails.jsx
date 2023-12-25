@@ -46,7 +46,7 @@ const ProductDetails = (props) => {
               <ListGroupItem>
                 <Rating
                   value={product.rating}
-                  text={`${product.numReviews} reviews`}
+                  text={`from ${product.numReviews} reviews`}
                 />
               </ListGroupItem>
               <ListGroupItem>Price: ${product.price}</ListGroupItem>
