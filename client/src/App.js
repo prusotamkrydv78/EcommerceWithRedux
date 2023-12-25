@@ -11,7 +11,7 @@ function App() {
       <main> 
         <Routes>
           <Route path="/" element={<HomeScreen />} exact />
-          <Route path="/product/2" element={<ProductDetails/>}  />
+          <Route path="/product/:id" element={<ProductDetails/>}  />
         </Routes>
       </main>
       <Footer />

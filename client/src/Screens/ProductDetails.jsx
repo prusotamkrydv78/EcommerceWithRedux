@@ -1,5 +1,6 @@
-import React from "react";
-import Products from "../products";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import {
   Col,
   Row,
@@ -10,13 +11,29 @@ import {
 } from "react-bootstrap";
 import Rating from "../Components/Rating";
 import { Link } from "react-router-dom";
-const ProductDetails = ({ match }) => {
-  const product = Products[1];
-  console.log(match);
+const ProductDetails = (props) => {
+  const [product, setProduct] = useState([]);
+  const params = useParams(); 
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const { data } = await axios({
+          method: "get",
+          url: `http://localhost:5000/products/${params.id}`,
+        });
+        setProduct(data);
+      } catch (error) {
+        // console.log(error);
+      }
+    };
+    fetchProduct();
+  }, []);
   return (
     <>
-      <div className="container my-2" >
-        <Link to="/" className="btn btn-light ">Go back</Link>
+      <div className="container my-2">
+        <Link to="/" className="btn btn-light my-2  ">
+          Go back
+        </Link>
         <Row>
           <Col md={6}>
             <Image src={product.image} alt={product.name} fluid />
