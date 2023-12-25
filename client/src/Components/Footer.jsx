@@ -6,8 +6,8 @@ const Footer = () => {
     <>
       <Container>
         <Row>
-          <Col md={12}>
-            <span className="text-center">Copyright &copy; MadhesiCoder</span>
+          <Col md={12} className="text-center">
+            <span>Copyright &copy; MadhesiCoder</span>
           </Col>
         </Row>
       </Container>
