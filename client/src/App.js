@@ -1,4 +1,5 @@
-import "./App.css"; 
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import HomeScreen from "./Screens/HomeScreen";
@@ -7,8 +8,9 @@ function App() {
     <>
       <Header />
       <main>
-        <h1>hlo world</h1>
-        <HomeScreen />
+        <Routes>
+          <Route path="/" element={<HomeScreen />} exact />
+        </Routes>
       </main>
       <Footer />
     </>
