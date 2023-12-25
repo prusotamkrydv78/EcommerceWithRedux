@@ -10,7 +10,7 @@ const HomeScreen = () => {
           {Products.map((product) => {
             return (
               <Col md={3} className="my-2" key={product._id}>
-                <ProductScreen Product={product} />
+                <ProductScreen product={product} />
               </Col>
             );
           })}
