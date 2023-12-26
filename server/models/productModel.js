@@ -22,7 +22,7 @@ const productSchema = new mongoose.Schema(
   {
     User: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
+      // required: true,
       ref: "User",
     },
     name: {
@@ -41,7 +41,7 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    desc: {
+    description: {
       type: String,
       required: true,
     },
@@ -65,5 +65,5 @@ const productSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-const Product = mongoose.model("Product", productSchema);
-module.exports = Product;
+const productModel = mongoose.model("Product", productSchema);
+module.exports = productModel;
