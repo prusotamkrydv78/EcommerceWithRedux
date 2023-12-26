@@ -19,7 +19,7 @@ const ProductDetails = (props) => {
       try {
         const { data } = await axios({
           method: "get",
-          url: `http://localhost:5000/products/${params.id}`,
+          url: `http://localhost:5000/api/products/${params.id}`,
         });
         setProduct(data);
       } catch (error) {

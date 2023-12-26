@@ -10,7 +10,7 @@ const HomeScreen = () => {
       try {
         const { data } = await axios({
           method: "get",
-          url: `http://localhost:5000/products`,
+          url: `http://localhost:5000/api/products`,
         });
         setProducts(data);
       } catch (error) {
