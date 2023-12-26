@@ -16,6 +16,7 @@ const corsOptions = {
   credentials: true,
 };
 app.use(cors(corsOptions));
+app.use("/api", productRoutes);
 app.use(errorHanlder)
 // data base connection here
 connectDb();
@@ -26,7 +27,6 @@ app.get("/", (req, res) => {
 });
 
 
-app.use("/api", productRoutes);
 app.listen(process.env.PORT || 5000, () => {
   console.log(`your sever is running on ${PORT}`);
 });
