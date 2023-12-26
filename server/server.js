@@ -1,4 +1,5 @@
 const express = require("express");
+const { errorHanlder } = require("./middlewares/errorMiddleware");
 const products = require("./data/products");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -15,7 +16,7 @@ const corsOptions = {
   credentials: true,
 };
 app.use(cors(corsOptions));
-
+app.use(errorHanlder)
 // data base connection here
 connectDb();
 
