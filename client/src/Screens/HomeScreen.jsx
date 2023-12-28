@@ -3,21 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { listProduct } from "../actions/productAction";
 import { Col, Container, Row } from "react-bootstrap";
 import ProductScreen from "./ProductScreen";
-
-
+import Loader from "../Components/Shared/Loader";
+import Message from "../Components/shared/Message";
 const HomeScreen = () => {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
   useEffect(() => {
     dispatch(listProduct());
-  }, []); 
+  }, [dispatch]);
   return (
     <>
       {loading ? (
-        <h1>loading</h1>
+        <Loader />
       ) : error ? (
-        <h2>{error}</h2>
+        <Message variant="danger">{error}</Message>
       ) : (
         <Container>
           <Row>
