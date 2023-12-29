@@ -4,11 +4,12 @@ import { listProduct } from "../actions/productAction";
 import { Col, Container, Row } from "react-bootstrap";
 import ProductScreen from "./ProductScreen";
 import Loader from "../Components/Shared/Loader";
-import Message from "../Components/shared/Message";
+import Message from "../Components/Shared/Message";
 const HomeScreen = () => {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
+  console.log(products)
   useEffect(() => {
     dispatch(listProduct());
   }, [dispatch]);
