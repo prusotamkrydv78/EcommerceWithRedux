@@ -5,18 +5,21 @@ import {
   productDetailsReducer,
   productListReducer,
 } from "./reducers/productRedusers";
-import { cartReducers } from "./reducers/cartReducer";
-import { json } from "react-router-dom";
-const cartItemFromStorage = localStorage.getItem("cartItems")
-  ? JSON.parse(localStorage.getItem("cartItem"))
+import { cartReducer } from "./reducers/cartReducer";
+
+
+const cartItemsFromStorage = localStorage.getItem("cartItems")
+  ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
-  cart: cartReducers,
+  cart: cartReducer,
 });
 const initialState = {
-  cart: { cartkItems: cartItemFromStorage },
+  cart: {
+    cartItems: cartItemsFromStorage, 
+  },
 };
 const middleware = [thunk];
 

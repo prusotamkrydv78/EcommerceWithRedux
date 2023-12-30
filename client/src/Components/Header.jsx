@@ -13,7 +13,7 @@ function Header() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="" style={{ marginLeft: "auto" }}>
-            <LinkContainer to=".cart">
+            <LinkContainer to="/cart">
               <Nav.Link>
                 <i className="fas fa-shopping-cart mx-2" />
                 Cart

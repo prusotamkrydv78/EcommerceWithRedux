@@ -24,10 +24,8 @@ const ProductDetails = (props) => {
   const dispatch = useDispatch();
 
   const params = useParams();
-  const productDetails = useSelector((state) => state.productDetails);
-  console.log(productDetails);
-  const { loading, error, product } = productDetails;
-  console.log(product);
+  const productDetails = useSelector((state) => state.productDetails); 
+  const { loading, error, product } = productDetails; 
   useEffect(() => {
     dispatch(listProductDetails(params.id));
   }, [dispatch]);
