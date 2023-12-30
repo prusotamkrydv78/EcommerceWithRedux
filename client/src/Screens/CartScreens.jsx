@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../actions/cartAction";
+import { addToCart, removeFromCart } from "../actions/cartAction";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
   Col,
@@ -18,7 +18,7 @@ import Message from "../Components/Shared/Message";
 const CartScreens = () => {
   const params = useParams();
   const location = useLocation();
-  const navigate= useNavigate()
+  const navigate = useNavigate();
   const productId = params.id;
   console.log(productId);
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
@@ -34,10 +34,13 @@ const CartScreens = () => {
   const { cartItems } = cart;
   console.log(cartItems);
   const removeFromCartHandler = (id) => {
-    console.log("reove", id);
+    dispatch(removeFromCart(id));
   };
-  const checkout = ()=>{
-    navigate("/login?redirect-shipping")
+  const checkout = () => {
+    navigate("/login?redirect-shipping");
+  };
+  const buyMore =()=>{
+    navigate("/")
   }
   return (
     <>
@@ -85,7 +88,10 @@ const CartScreens = () => {
                           variant="light"
                           onClick={() => removeFromCartHandler(item.product)}
                         >
-                          <i className="fa fa-trash" aria-hidden="true" />
+                          <i
+                            className="fa fa-trash text-denger"
+                            aria-hidden="true"
+                          />
                         </Button>
                       </Col>
                     </Row>
@@ -103,13 +109,15 @@ const CartScreens = () => {
                   subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}
                   ) items
                 </h3>
-                <h4>
-                  {" "}
-                  $
-                  {cartItems
-                    .reduce((acc, item) => acc + item.qty * item.price, 0)
-                    .toFixed(2)}
-                </h4>
+                <div style={{ display: "flex" ,justifyContent:"space-around"}}>
+                  <h4>
+                    $
+                    {cartItems
+                      .reduce((acc, item) => acc + item.qty * item.price, 0)
+                      .toFixed(2)}
+                  </h4>
+                  <button className=" btn-block px-2" style={{textTransform:"uppercase",fontWeight:"800",background:"lightblue"}} onClick={buyMore}>buy more </button>
+                </div>
               </ListGroupItem>
               <Button
                 type="button"
@@ -117,7 +125,7 @@ const CartScreens = () => {
                 disabled={cartItems.length === 0}
                 onClick={checkout}
               >
-               Proceed To checkout
+                Proceed To checkout
               </Button>
             </ListGroup>
           </Card>
